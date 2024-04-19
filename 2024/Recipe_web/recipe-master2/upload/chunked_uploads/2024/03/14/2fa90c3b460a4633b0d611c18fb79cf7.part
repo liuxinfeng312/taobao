@@ -1,0 +1,12 @@
+[admin@iZ2ze7bsxkfmnngbwink97Z ~]$ sudo /etc/init.d/bt default | grep 外网面板地址
+外网面板地址: http://123.57.238.94:8888/d03fe4b9
+[admin@iZ2ze7bsxkfmnngbwink97Z ~]$ sudo /etc/init.d/bt default | grep username
+username: woda1bby
+[admin@iZ2ze7bsxkfmnngbwink97Z ~]$ sudo /etc/init.d/bt default | grep password
+password: 9f1f762641da
+
+
+
+地址：http://123.57.238.94:8888/d03fe4b9
+用户名：woda1bby
+密码：9f1f762641da

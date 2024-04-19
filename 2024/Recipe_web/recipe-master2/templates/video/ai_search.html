@@ -1,0 +1,72 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block content %}
+
+<h3 class="ui header">上传图片  {{ai_label}} {{acc}} </h3>
+
+<img src="{{ png_path }}" alt="未上传图片"  width="40%"
+    height="40%" >
+<div style="float:right">
+<span class="video-side-title">最相似图片前三名</span>
+
+<div class="ui unstackable divided items">
+
+    {% for item in recommend_list %}
+    <div class="item">
+        <div class="ui tiny image">
+            {% thumbnail item.cover "300x200" crop="center" as im %}
+            <img class="ui image" src="{{ im.url }}">
+            {% empty %}
+            {% endthumbnail %}
+        </div>
+        <div class="middle aligned content">
+            <a class=" header-title" href="{% url 'video:detail' item.pk %}">{{ item.title }}</a>
+            <div class="meta">
+                <span class="description">{{ item.view_count }}次观看</span>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <h3>暂无推荐</h3>
+    {% endfor %}
+    </div>
+    </div>
+
+<!--<div class="ui unstackable items">-->
+
+<!--&lt;!&ndash;    {% for item in video_list %}&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="item">&ndash;&gt;44-->
+<!--&lt;!&ndash;        <div class="ui tiny image">&ndash;&gt;-->
+<!--&lt;!&ndash;            {% thumbnail item.cover "300x200" crop="center" as im %}&ndash;&gt;-->
+<!--&lt;!&ndash;            <img class="ui image" src="{{ im.url }}">&ndash;&gt;-->
+<!--&lt;!&ndash;            {% empty %}&ndash;&gt;-->
+<!--&lt;!&ndash;            {% endthumbnail %}&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        <div class="middle aligned content">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;          <a class="header" href="{% url 'video:detail' item.pk %}">{{ item.title }}</a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--    {% empty %}-->
+<!--    <h3>暂无数据</h3>-->
+
+
+
+
+<!--&lt;!&ndash;    {% endfor %}&ndash;&gt;-->
+
+<!--</div>-->
+
+{% load thumbnail %}
+
+<!--{% include "base/page_nav.html" %}-->
+
+{% endblock content %}
+
+{% block javascript %}
+<script  type="text/javascript" >
+$('.ui .dropdown').dropdown();
+</script>
+{% endblock javascript %}
+
